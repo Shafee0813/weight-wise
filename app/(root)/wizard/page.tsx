@@ -22,7 +22,7 @@ const page = async () => {
 }
 
 const WeightPicker = () => {
-
+  
   return (
     <div className='w-full flex gap-3'>
       <Button variant={"outline"} className='w-1/2 py-4'>Kilograms</Button>
