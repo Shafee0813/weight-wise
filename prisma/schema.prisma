@@ -9,17 +9,24 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = "file:./dev.db"
 }
 
-enum WeightUnit {
-  KG
-  LBS
-}
-
-
 model UserSettings {
   userId     String @id
-  weightUnit WeightUnit
+  weightUnit String
+}
+
+model weight {
+  id     Int      @id @default(autoincrement())
+  weight Float
+  date   DateTime @default(now())
+}
+
+model customExercises {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  userId      String  @unique
 }
