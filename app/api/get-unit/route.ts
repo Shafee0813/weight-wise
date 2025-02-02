@@ -6,6 +6,9 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const user = await currentUser()
+    if(!user) {
+      redirect('/sign-in');
+    }
     const existingUser = await prisma.userSettings.findUnique({
       where: {
         userId: user?.id

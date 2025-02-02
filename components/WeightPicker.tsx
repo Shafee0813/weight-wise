@@ -1,15 +1,17 @@
 "use client"
-import { useState } from "react"
+import { use, useEffect, useState } from "react"
 import { Button } from "./ui/button"
 
 const WeightPicker = ({prevUnit} : {prevUnit : string}) => {
   const [unit, setUnit] = useState(prevUnit)
   const [selected, setSelected] = useState(prevUnit)
-
+  useEffect(() => {
+    setSelected(prevUnit)
+  } , [prevUnit])
   return (
     <div className='flex flex-col gap-3'>
     <div className='w-full flex gap-3'>
-      <Button variant={selected == "KG" ? "default" : "outline"} 
+      <Button variant={selected === "KG" ? "default" : "outline"} 
        className='w-1/2 py-4'
        onClick={() => {
         setUnit("KG")
@@ -17,7 +19,7 @@ const WeightPicker = ({prevUnit} : {prevUnit : string}) => {
         }}>
         Kilograms
       </Button>
-      <Button variant={selected == "LBS" ? "default " : "outline"}
+      <Button variant={selected === "LBS" ? "default" : "outline"}
       onClick={() => {
         setUnit("LBS")
         setSelected("LBS")
