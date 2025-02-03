@@ -1,16 +1,22 @@
 "use client"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
+import SkeletonWrapper from "./SkeletonWrapper"
 
 const WeightPicker = ({prevUnit} : {prevUnit : string}) => {
   const [unit, setUnit] = useState(prevUnit)
   const [selected, setSelected] = useState(prevUnit)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
+    setLoading(true)
     setSelected(prevUnit)
+    setTimeout(() => {setLoading(false)}, 1000)
   } , [prevUnit])
+
   return (
     <div className='flex flex-col gap-3'>
-    <div className='w-full flex gap-3'>
+    <div className='w-full flex gap-3 mb-2'>
+      <SkeletonWrapper loading={loading}>
       <Button variant={selected === "KG" ? "default" : "outline"} 
        className='w-1/2 py-4'
        onClick={() => {
@@ -27,6 +33,7 @@ const WeightPicker = ({prevUnit} : {prevUnit : string}) => {
       className='w-1/2 py-4'>
         Pounds
       </Button>
+    </SkeletonWrapper>
     </div>
     <Button onClick={()=> {
       fetch(`/api/set-unit?unit=${unit}`)
