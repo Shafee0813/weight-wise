@@ -22,11 +22,11 @@ model weight {
   id     Int      @id @default(autoincrement())
   weight Float
   date   DateTime @default(now())
+  userId String
 }
 
 model customExercises {
   id          Int     @id @default(autoincrement())
   name        String
-  description String?
   userId      String  @unique
 }

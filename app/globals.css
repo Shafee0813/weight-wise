@@ -70,3 +70,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .heading-text{
+    @apply max-sm:text-base max-md:text-xl text-2xl;
+  }
+}
