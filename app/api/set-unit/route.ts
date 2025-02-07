@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
-import { WeightUnit } from "@prisma/client";
 import { redirect } from "next/navigation";
+
+type WeightUnitType = 'KG' | 'LBS';
 
 export async function GET(request : Request) {
   const user = await currentUser()
@@ -25,7 +26,7 @@ export async function GET(request : Request) {
         userId: user.id
       },
       data: {
-        weightUnit: unit as WeightUnit
+        weightUnit: unit as WeightUnitType
       }
     })
     return Response.json(userData);
@@ -34,7 +35,7 @@ export async function GET(request : Request) {
   const userData = await prisma.userSettings.create({
     data: {
       userId: user.id,
-      weightUnit: unit as WeightUnit
+      weightUnit: unit as WeightUnitType
     }
   })
 
