@@ -9,7 +9,7 @@ const Page = () => {
 
   async function authAndFetch() {
 
-    const prevUnit = await fetch(`/api/get-unit`, {method: 'GET'});
+    const prevUnit = await fetch(`/api/weight-unit`, {method: 'GET'});
     const parsedData = await prevUnit.json();
     setData(parsedData);
     console.log(parsedData);

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import SkeletonWrapper from "./SkeletonWrapper"
+import { redirect } from "next/navigation"
 
 const WeightPicker = ({prevUnit} : {prevUnit : string}) => {
   const [unit, setUnit] = useState(prevUnit)
@@ -17,18 +18,18 @@ const WeightPicker = ({prevUnit} : {prevUnit : string}) => {
     <div className='flex flex-col gap-3'>
     <div className='w-full flex gap-3 mb-2'>
       <SkeletonWrapper loading={loading}>
-      <Button variant={selected === "KG" ? "default" : "outline"} 
+      <Button variant={selected === "Kg" ? "default" : "outline"} 
        className='w-1/2 py-4'
        onClick={() => {
-        setUnit("KG")
-        setSelected("KG")
+        setUnit("Kg")
+        setSelected("Kg")
         }}>
         Kilograms
       </Button>
-      <Button variant={selected === "LBS" ? "default" : "outline"}
+      <Button variant={selected === "Lb" ? "default" : "outline"}
       onClick={() => {
-        setUnit("LBS")
-        setSelected("LBS")
+        setUnit("Lb")
+        setSelected("Lb")
       }}
       className='w-1/2 py-4'>
         Pounds
@@ -36,9 +37,9 @@ const WeightPicker = ({prevUnit} : {prevUnit : string}) => {
     </SkeletonWrapper>
     </div>
     <Button onClick={()=> {
-      fetch(`/api/set-unit?unit=${unit}`)
+      fetch(`/api/weight-unit?unit=${unit}`, {method: 'PUT'})
       .then(() => {
-        window.location.href = '/dashboard'
+        redirect('/dashboard')
       })
     }}>
       Done! Take me to the dashboard!
