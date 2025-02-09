@@ -8,7 +8,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger, } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTitle, SheetTrigger, } from "@/components/ui/sheet"
 import { MenuIcon } from 'lucide-react';
 
 
@@ -37,13 +37,12 @@ const MobileNavbar = () => {
         </SheetTrigger>
         <SheetContent side={"left"} className='w-80'>
           <SheetTitle className='pb-6'><DesktopLogo/></SheetTitle>
-          <SheetDescription>
             {navbarItems.map((item, index)=> (        
               <div className="py-3" key = {index}>
               <NavbarLink  href={item.href} label={item.label} />
               </div>
             ))}
-          </SheetDescription>
+          
         </SheetContent>
         </Sheet>
         <MobileLogo />

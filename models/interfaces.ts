@@ -1,7 +1,7 @@
 
 export interface WeightTableProps {
   id: string
-  date: string
+  date: Date 
   weight: number
   userId : string
 }
