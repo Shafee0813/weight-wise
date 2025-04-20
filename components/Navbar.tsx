@@ -15,7 +15,6 @@ import { MenuIcon } from 'lucide-react';
 const navbarItems = [ 
   {label : "About", href: "/"},
   {label : "Dashboard", href: "/dashboard"},
-  {label : "Exercises", href: "/exercises"}, 
 ]
 
 const Navbar = () => {

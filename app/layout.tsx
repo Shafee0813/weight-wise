@@ -1,6 +1,6 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Mulish } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { dark } from '@clerk/themes'
@@ -8,6 +8,11 @@ import { Toaster } from '@/components/ui/toaster';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const mulish = Mulish({
+  variable: "--font-mulish",
   subsets: ["latin"],
 });
 
@@ -30,7 +35,7 @@ export default function RootLayout({
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en" className='dark' style={{colorScheme: 'dark '}}>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} ${mulish.variable} antialiased`}
           >
             <ThemeProvider
             attribute="class"
