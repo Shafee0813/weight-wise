@@ -30,7 +30,7 @@ const MobileNavbar = () => {
   return (
     <nav className='flex justify-between items-center h-16 border-b-2 px-4 sm:hidden'>
       <div className="flex items-center space-x-4">
-        <Sheet>
+        {/* <Sheet>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon"  aria-label="Open menu" ><MenuIcon/></Button>
         </SheetTrigger>
@@ -43,7 +43,7 @@ const MobileNavbar = () => {
             ))}
           
         </SheetContent>
-        </Sheet>
+        </Sheet> */}
         <MobileLogo />
       </div>
 
@@ -58,12 +58,12 @@ const MobileNavbar = () => {
 const DesktopNavbar = () => {
 
   return (
-    <nav className='hidden justify-between items-center h-16 border-b-2 px-10 max-md:px-4 sm:flex'>
+    <nav className='hidden justify-between items-center h-16 border-b-2 px-10 max-md:px-4 sm:flex  backdrop-blur-lg'>
       <div className="flex justify-center items-center space-x-2 relative">
       <DesktopLogo />
-      {navbarItems.map((item, index) => (
+      {/* {navbarItems.map((item, index) => (
         <NavbarLink key = {index} href={item.href} label={item.label} />
-      ))}
+      ))} */}
       </div>
       <div className='flex items-center space-x-4'>
         <ThemeToggle />

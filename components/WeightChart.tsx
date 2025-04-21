@@ -57,15 +57,14 @@ export function WeightChart() {
 
   if (data.length === 0 && !loading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <p className="text-muted-foreground">No weight data available</p>
+      <div className="flex items-center justify-center h-full my-5 bg-[#F5F5F5] dark:bg-[#101010] mx-auto w-fit">
+        <p className="text-muted-foreground p-60 max-md:p-40 max-sm:p-10">No weight data available</p>
       </div>
     )
   }
 
   return (
     <div className="w-full p-4">
-      <h1 className="heading-text font-bold p-4 pb-8 max-md:p-2 max-md:pb-4"> Your weight graph</h1>
       <SkeletonWrapper loading={loading} className=" max-w-[800px] m-auto" >
         <ChartContainer
           config={{

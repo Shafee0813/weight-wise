@@ -19,6 +19,8 @@ const page = async () => {
         </div>
       </div>
       <WeightTable />
+      
+      <h1 className="heading-text font-bold p-4 pb-8 max-md:p-2 max-md:pb-4"> Your weight graph</h1>
       <WeightChart/>
     </section>
   )

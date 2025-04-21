@@ -9,12 +9,28 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model UserSettings {
   userId     String @id
+  weightUnit String
+}
+
+model weight {
+  id     Int      @id @default(autoincrement())
+  weight Float
+  date   DateTime @default(now())
+  userId String
+}
+
+model customExercises {
+  id          Int     @id @default(autoincrement())
+  name        String
+  userId      String  @unique
+}
   weightUnit String
 }
 
